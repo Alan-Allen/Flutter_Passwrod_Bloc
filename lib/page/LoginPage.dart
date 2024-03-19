@@ -25,57 +25,64 @@ class LoginPage extends StatelessWidget {
           },
         ),
       ),
-      body: Center(
-        child: Column(
-          children: [
-            const SizedBox(height: 50),
-            SizedBox(
-              width: 400,
-              child: TextField(
-                controller: _userController,
-                decoration: InputDecoration(
-                  prefixIcon: const Icon(Icons.person_outline),
-                  hintText: 'Enter your user',
-                  label: const Text('User'),
-                  border: OutlineInputBorder(
-                    borderSide: const BorderSide(width: 3),
-                    borderRadius: BorderRadius.circular(20.0),
+      body: Stack(
+        children: [
+          Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                children: [
+                  Center(
+                    child: SizedBox(
+                      width: 400,
+                      child: TextField(
+                        controller: _userController,
+                        decoration: InputDecoration(
+                          prefixIcon: const Icon(Icons.person_outline),
+                          hintText: 'Enter your user',
+                          label: const Text('User'),
+                          border: OutlineInputBorder(
+                            borderSide: const BorderSide(width: 3),
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 20),
-            SizedBox(
-              width: 400,
-              child: TextField(
-                controller: _passwordController,
-                decoration: InputDecoration(
-                  prefixIcon: const Icon(Icons.lock_outline),
-                  hintText: 'Enter your password',
-                  label: const Text('Password'),
-                  border: OutlineInputBorder(
-                    borderSide: const BorderSide(width: 3),
-                    borderRadius: BorderRadius.circular(20.0),
+                  const SizedBox(height: 20),
+                  Center(
+                    child: SizedBox(
+                      width: 400,
+                      child: TextField(
+                        controller: _passwordController,
+                        decoration: InputDecoration(
+                          prefixIcon: const Icon(Icons.lock_outline),
+                          hintText: 'Enter your password',
+                          label: const Text('Password'),
+                          border: OutlineInputBorder(
+                            borderSide: const BorderSide(width: 3),
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
+                  const SizedBox(height: 40),
+                  Center(
+                    child: CustomButton(
+                      onPressed: () {
+                        print('Login button pressed');
+                      },
+                      text: 'Login',
+                      Colors: Colors.blue,
+                      textColors: Colors.white,
+                      width: 30,
+                      height: 15,
+                    ),
+                  ),
+                ],
               ),
-            ),
-            const SizedBox(height: 50),
-            Center(
-              child: CustomButton(
-                onPressed: () {
-                  print('Login button pressed');
-                  loginBloc.add(LoginEvent.login);
-                },
-                text: 'Login',
-                Colors: Colors.blue,
-                textColors: Colors.white,
-                width: 30,
-                height: 15,
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
